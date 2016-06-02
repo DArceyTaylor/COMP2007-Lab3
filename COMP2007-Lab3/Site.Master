@@ -29,7 +29,7 @@
 
         <footer class="navbar navbar-fixed-bottom bg-info">
             <div class="container">
-                <p>&copy; 2016 Contoso University</p>
+                <p class="text-muted">&copy; 2016 Contoso University</p>
             </div>
         </footer>
 
