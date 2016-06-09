@@ -7,7 +7,9 @@
                 <h1>Student List</h1>
                 <a href="/StudentDetails.aspx" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Add Student</a>
                 <asp:GridView runat="server" CssClass="table table-bordered table-stripped table-hover"
-                    ID="StudentsGridView" AutoGenerateColumns="false">
+                    ID="StudentsGridView" AutoGenerateColumns="false" DataKeyNames="StudentID" 
+                    OnRowDeleting="StudentsGridView_RowDeleting" AllowPaging="true" PageSize="3" 
+                    OnPageIndexChanging="StudentsGridView_PageIndexChanging">
 
                     <Columns>
                         <asp:BoundField DataField="StudentID" HeaderText="Student ID" Visible="true" />
@@ -15,6 +17,8 @@
                         <asp:BoundField DataField="FirstMidName" HeaderText="First Name" Visible="true" />
                         <asp:BoundField DataField="EnrollmentDate" HeaderText="Enrollment Date" Visible="true"
                             DataFormatString="{0:MMM dd, yyyy}" />
+                        <asp:CommandField HeaderText="Delete" DeleteText="<i class='fa fa-trash-o -fa-lg'></i>Delete" 
+                            ShowDeleteButton="true" ButtonType="Link" ControlStyle-CssClass="btn btn-danger btn-sm" />
                     </Columns>
 
                 </asp:GridView>

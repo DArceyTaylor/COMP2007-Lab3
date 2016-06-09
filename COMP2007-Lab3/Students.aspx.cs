@@ -44,5 +44,64 @@ namespace COMP2007_Lab3
                 StudentsGridView.DataBind();
             }
         }
+
+        /**
+         * <summary>
+         * this event handler deletes a student from the db using EF
+         * </summary>
+         * 
+         * @method StudentsGridView_RowDeleting
+         * @param {object} sender
+         * @param {GridViewDeleteEventArgs} e
+         * @returns {void}
+         **/
+
+        protected void StudentsGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            // store which row was clicked
+            int selectedRow = e.RowIndex;
+
+            // get selected StudentID using the Grid's DataKey Collection
+            int StudentID = Convert.ToInt32(StudentsGridView.DataKeys[selectedRow].Values["StudentID"]);
+
+            // use EF to find the selected student in the DB and remove it
+            using(DefaultConnection db = new DefaultConnection())
+            {
+                //create object of the Student class and store the query string inside of it
+                Student deletedStudent = (from studentRecords in db.Students
+                                          where studentRecords.StudentID == StudentID
+                                          select studentRecords).FirstOrDefault();
+
+                // remove the selected student from the db
+                db.Students.Remove(deletedStudent);
+
+                // save the changes
+                db.SaveChanges();
+
+                // refresh the grid
+                this.GetStudents();
+            }
+        }
+
+        /**
+         * <summary>
+         * This event handler allows pagination to occur fo the students page
+         * </summary>
+         * @method StudentsGridView_PageIndexChanging
+         * @param {object} sender
+         * @param {GridViewPageEventArgs} e
+         * @returns {void}
+         **/ 
+
+        protected void StudentsGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            // set the new page number
+            StudentsGridView.PageIndex = e.NewPageIndex;
+
+            // refresh the grid
+            this.GetStudents();
+        }
     }
 }
+ 
+ 
