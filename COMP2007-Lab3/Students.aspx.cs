@@ -101,6 +101,25 @@ namespace COMP2007_Lab3
             // refresh the grid
             this.GetStudents();
         }
+
+        /**
+         * <summary>
+         * Changes the amount of objects are on each grid view
+         * </summary>
+         * @method PageSizeDropDownList_SelectedIndexChanged
+         * @param {object} sender
+         * @param {EventArgs} e
+         * @returns {void}
+         **/
+
+        protected void PageSizeDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // set the new page size
+            StudentsGridView.PageSize = Convert.ToInt32(PageSizeDropDownList.SelectedValue);
+
+            // refresh the grid
+            this.GetStudents();
+        }
     }
 }
  
