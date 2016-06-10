@@ -50,7 +50,6 @@ namespace COMP2007_Lab3
                 StudentsGridView.DataBind();
             }
         }
-
         /**
          * <summary>
          * this event handler deletes a student from the db using EF
@@ -88,7 +87,6 @@ namespace COMP2007_Lab3
                 this.GetStudents();
             }
         }
-
         /**
          * <summary>
          * This event handler allows pagination to occur fo the students page

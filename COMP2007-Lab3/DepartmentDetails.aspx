@@ -9,15 +9,14 @@
                 <br />
                 <div class="form-group">
                     <label class="control-label" for="DepartmentNameTextBox">DepartmentName</label>
-                    <asp:TextBox runat="server" CssClass="form-control" id="DepartmentNameTextBox" placeholder="Department Name"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="form-control" id="DepartmentNameTextBox" placeholder="Department Name"
+                        Required="true"></asp:TextBox>
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="BudgetTextBox">Budget</label>
-                    <asp:TextBox runat="server" CssClass="form-control" id="BudgetTextBox" placeholder="Budget"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="form-control" id="BudgetTextBox" placeholder="Budget" Required="true"></asp:TextBox>
                     <asp:RangeValidator ID="RangeValidator2" runat="server" ErrorMessage="Invalid Date! Budget must be greater than 0.0"
-                        ControlToValidate="BudgetTextBox" ValueToCompare="0.00" 
-                        Operator="LessThanEqual" Type="Double" Display="Dynamic" BackColor="Red" ForeColor="White" 
-                        Font-Size="Large" ></asp:RangeValidator>
+                        ControlToValidate="BudgetTextBox" MinimumValue="1.0" MaximumValue="9999999999.99" Display="Dynamic" BackColor="Red" ForeColor="White" Font-Size="Large" ></asp:RangeValidator>
                 </div>
                 <div class="text-right">
                     <asp:Button Text="Cancel" ID="CancelButton" CssClass="btn btn-warning btn-lg" runat="server" UseSubmitBehavior="false"
